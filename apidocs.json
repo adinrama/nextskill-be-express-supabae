@@ -1,0 +1,142 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API Doc",
+    "description": "Dokumentasi API dari series Belajar Backend dengan Express dan Supabase",
+    "version": "1.0.0"
+  },
+  "_servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "localhost"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Siswa",
+      "description": "Logic API untuk data siswa"
+    }
+  ],
+  "paths": {
+    "/siswa": {
+      "get": {
+        "tags": ["Siswa"],
+        "summary": "Get all students",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "500": {
+            "description": "Failed"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Siswa"],
+        "summary": "Add new student",
+        "consumes": "application/json",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nama": {
+                    "type": "string"
+                  },
+                  "kelas": {
+                    "type": "string"
+                  },
+                  "jurusan": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Failed"
+          }
+        }
+      }
+    },
+    "/siswa/{id}": {
+      "put": {
+        "tags": ["Siswa"],
+        "summary": "Update student",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Student ID"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nama": {
+                    "type": "string"
+                  },
+                  "kelas": {
+                    "type": "string"
+                  },
+                  "jurusan": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Failed"
+          },
+          "500": {
+            "description": "Failed"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Siswa"],
+        "summary": "Delete student",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Student ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Failed"
+          },
+          "500": {
+            "description": "Failed"
+          }
+        }
+      }
+    }
+  }
+}
